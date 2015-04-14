@@ -25,7 +25,7 @@ public class CharCounterTest {
 
     }
 
-    /*
+    
     @Test
     public void howManyShouldReturnNegativeWhenCharIsSymbolAt(){
         
@@ -35,6 +35,7 @@ public class CharCounterTest {
 
     }
 
+    /*
 	@Test
     public void countAllShouldReturnAnArrayWithAllCharsCount(){
         

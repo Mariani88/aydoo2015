@@ -14,6 +14,9 @@ public class CharCounter {
 		
 		if ( character == '$' ){
 			result = -1;
+		
+		}else if(character == '@'){
+			result = -2;
 		}
 		
 		return result;
