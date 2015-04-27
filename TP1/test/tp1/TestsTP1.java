@@ -1,13 +1,11 @@
 package tp1;
 
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.BeforeClass;
+
 import org.junit.Test;
 
 import parque.Atraccion;
@@ -124,11 +122,14 @@ public class TestsTP1 {
 
 		Assert.assertTrue(atraccion1.equals(atraccion2));
 	}
-	
-	
+
 	@Test
 	public void testDevolverItinerarioConAtraccionesPreferidas() {
 
+		this.usuario.setPresupuesto(60000);
+		this.usuario.setTiempoDiponible(1000);
+		this.usuario.setVelocidadDeTraslado(1000);
+		
 		List<Atraccion> atraccionesResultantes = new LinkedList<Atraccion>();
 		atraccionesResultantes.add(this.atracciones.get(0));
 		atraccionesResultantes.add(this.atracciones.get(1));
@@ -141,7 +142,7 @@ public class TestsTP1 {
 				.getAtracciones());
 	}
 
-	/*@Test
+	@Test
 	public void devolverItinerarioConAtraccionesMasAccesiblesPorPresupuesto() {
 
 		this.usuario.setPresupuesto(600);
@@ -152,10 +153,11 @@ public class TestsTP1 {
 
 		List<Itinerario> itinerarios = sugestor.crearItinerarios(this.usuario);
 
-		List <Atraccion> atraccionesAccesibles =new LinkedList <Atraccion> ();
-		atraccionesAccesibles.add( this.atracciones.get(0) );
-		atraccionesAccesibles.add( this.atracciones.get(1) );
-		
-		Assert.assertEquals(atraccionesAccesibles, itinerarios.get(0));
-	}*/
+		List<Atraccion> atraccionesAccesibles = new LinkedList<Atraccion>();
+		atraccionesAccesibles.add(this.atracciones.get(0));
+		atraccionesAccesibles.add(this.atracciones.get(1));
+
+		Assert.assertEquals(atraccionesAccesibles, itinerarios.get(0)
+				.getAtracciones());
+	}
 }
