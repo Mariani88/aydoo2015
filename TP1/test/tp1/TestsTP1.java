@@ -18,6 +18,8 @@ import parque.PromocionAxB;
 import parque.PromocionPorcentual;
 import parque.TipoDeAtraccion;
 import parque.Usuario;
+import tp1.Itinerario;
+import tp1.Sugestor;
 
 public class TestsTP1 {
 
@@ -84,14 +86,14 @@ public class TestsTP1 {
 	public void inicializarPromociones() {
 
 		// atraccion0, atraccion1
-		Set<Atraccion> atracciones0 = new HashSet<Atraccion>();
+		List<Atraccion> atracciones0 = new LinkedList<Atraccion>();
 		atracciones0.add(this.atracciones.get(0));
 		atracciones0.add(this.atracciones.get(1));
 
 		Promocion promocion0 = new PromocionAbsoluta(atracciones0, 1, 100);
 
 		// atraccion0, atraccion1, atraccion3
-		Set<Atraccion> atracciones1 = new HashSet<Atraccion>();
+		List<Atraccion> atracciones1 = new LinkedList<Atraccion>();
 		atracciones1.add(this.atracciones.get(0));
 		atracciones1.add(this.atracciones.get(1));
 		atracciones1.add(this.atracciones.get(3));
@@ -99,14 +101,14 @@ public class TestsTP1 {
 		Promocion promocion1 = new PromocionPorcentual(atracciones1, 3, 25);
 
 		// atraccion0, atraccion1, atraccion3, atraccion5
-		Set<Atraccion> atracciones2 = new HashSet<Atraccion>();
+		List<Atraccion> atracciones2 = new LinkedList<Atraccion>();
 		atracciones2.addAll(atracciones1);
 		atracciones2.add(this.atracciones.get(5));
 
 		Promocion promocion2 = new PromocionAxB(atracciones2, 6,
 				this.atracciones.get(5));
-		
-		this.promociones = new LinkedList <Promocion> ();
+
+		this.promociones = new LinkedList<Promocion>();
 		this.promociones.add(promocion0);
 		this.promociones.add(promocion1);
 		this.promociones.add(promocion2);
@@ -122,16 +124,38 @@ public class TestsTP1 {
 
 		Assert.assertTrue(atraccion1.equals(atraccion2));
 	}
+	
+	
+	@Test
+	public void testDevolverItinerarioConAtraccionesPreferidas() {
 
-	/*
-	 * @Test public void mismaPromocionSiMismasAtracciones (){
-	 * 
-	 * 
-	 * }
-	 * 
-	 * @Test public void devolverItinerarioConPromocionesAccesibles(){
-	 * 
-	 * }
-	 */
+		List<Atraccion> atraccionesResultantes = new LinkedList<Atraccion>();
+		atraccionesResultantes.add(this.atracciones.get(0));
+		atraccionesResultantes.add(this.atracciones.get(1));
+		atraccionesResultantes.add(this.atracciones.get(4));
 
+		Sugestor sugestor = new Sugestor(this.atracciones, this.promociones);
+		List<Itinerario> itinerarios = sugestor.crearItinerarios(this.usuario);
+
+		Assert.assertEquals(atraccionesResultantes, itinerarios.get(0)
+				.getAtracciones());
+	}
+
+	/*@Test
+	public void devolverItinerarioConAtraccionesMasAccesiblesPorPresupuesto() {
+
+		this.usuario.setPresupuesto(600);
+		this.usuario.setTiempoDiponible(1000);
+		this.usuario.setVelocidadDeTraslado(1000);
+
+		Sugestor sugestor = new Sugestor(this.atracciones, this.promociones);
+
+		List<Itinerario> itinerarios = sugestor.crearItinerarios(this.usuario);
+
+		List <Atraccion> atraccionesAccesibles =new LinkedList <Atraccion> ();
+		atraccionesAccesibles.add( this.atracciones.get(0) );
+		atraccionesAccesibles.add( this.atracciones.get(1) );
+		
+		Assert.assertEquals(atraccionesAccesibles, itinerarios.get(0));
+	}*/
 }

@@ -1,14 +1,14 @@
 package parque;
 
 import java.util.Iterator;
-import java.util.Set;
+import java.util.List;
 
 import localExceptions.PorcentajeInvalido;
 
 
 public class PromocionPorcentual extends Promocion {
 
-	public PromocionPorcentual(Set<Atraccion> atracciones, int vigencia, float porcentajeDeDescuento) {
+	public PromocionPorcentual(List<Atraccion> atracciones, int vigencia, float porcentajeDeDescuento) {
 		super(atracciones, vigencia);
 		
 		try {

@@ -1,25 +1,25 @@
 package parque;
 
-import java.util.Set;
+import java.util.List;
 
 public abstract class Promocion {
 	
-	protected Set<Atraccion> atracciones;
+	protected List<Atraccion> atracciones;
 	protected int vigencia;
 	protected float criterioDeDescuento;
 	
-	public Promocion (Set <Atraccion> atracciones, int vigencia){
+	public Promocion (List<Atraccion> atracciones, int vigencia){
 		this.atracciones = atracciones;
 		this.vigencia = vigencia;
 	}
 	
 	public abstract float getDescuento ();
 
-	public Set<Atraccion> getAtracciones() {
+	public List<Atraccion> getAtracciones() {
 		return this.atracciones;
 	}
 
-	public void setAtracciones(Set<Atraccion> atracciones) {
+	public void setAtracciones(List<Atraccion> atracciones) {
 		this.atracciones = atracciones;
 	}
 

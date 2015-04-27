@@ -1,10 +1,11 @@
 package parque;
 
-import java.util.Set;
+import java.util.List;
+
 
 public class PromocionAbsoluta extends Promocion {
 	
-	public PromocionAbsoluta(Set<Atraccion> atracciones, int vigencia, float descuento) {
+	public PromocionAbsoluta(List<Atraccion> atracciones, int vigencia, float descuento) {
 		super(atracciones, vigencia);
 		this.criterioDeDescuento = descuento;	
 	}
