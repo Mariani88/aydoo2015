@@ -72,7 +72,7 @@ public class TestsTP1 {
 		this.atracciones.add(atraccion5);
 
 		this.inicializarUsuarioDePrueba();
-		
+		this.inicializarPromociones();
 
 	}
 
@@ -81,7 +81,36 @@ public class TestsTP1 {
 		this.usuario = new Usuario(TipoDeAtraccion.AVENTURA);
 	}
 
-	
+	public void inicializarPromociones() {
+
+		// atraccion0, atraccion1
+		Set<Atraccion> atracciones0 = new HashSet<Atraccion>();
+		atracciones0.add(this.atracciones.get(0));
+		atracciones0.add(this.atracciones.get(1));
+
+		Promocion promocion0 = new PromocionAbsoluta(atracciones0, 1, 100);
+
+		// atraccion0, atraccion1, atraccion3
+		Set<Atraccion> atracciones1 = new HashSet<Atraccion>();
+		atracciones1.add(this.atracciones.get(0));
+		atracciones1.add(this.atracciones.get(1));
+		atracciones1.add(this.atracciones.get(3));
+
+		Promocion promocion1 = new PromocionPorcentual(atracciones1, 3, 25);
+
+		// atraccion0, atraccion1, atraccion3, atraccion5
+		Set<Atraccion> atracciones2 = new HashSet<Atraccion>();
+		atracciones2.addAll(atracciones1);
+		atracciones2.add(this.atracciones.get(5));
+
+		Promocion promocion2 = new PromocionAxB(atracciones2, 6,
+				this.atracciones.get(5));
+		
+		this.promociones = new LinkedList <Promocion> ();
+		this.promociones.add(promocion0);
+		this.promociones.add(promocion1);
+		this.promociones.add(promocion2);
+	}
 
 	@Test
 	public void testMismaPosicionYMismoTipoIgualMismaAtraccion() {
