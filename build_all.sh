@@ -4,3 +4,5 @@ cd ejemplo1
 ant
 cd ../ejercicio1
 ant
+cd ../tp1
+ant
