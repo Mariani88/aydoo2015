@@ -39,4 +39,6 @@ public class Coordenada {
 		
 		return iguales;
 	}
+	
+	
 }

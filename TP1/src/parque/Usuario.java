@@ -10,10 +10,14 @@ public class Usuario {
 	
 	
 	public Usuario (TipoDeAtraccion atraccionPreferida){
-		this.posicion.setX(0);
-		this.posicion.setY(0);
+		this.posicion = new Coordenada (0,0);
 		
 		this.AtraccionPreferida = atraccionPreferida;
+	}
+
+
+	public void setPosicion(Coordenada posicion) {
+		this.posicion = posicion;
 	}
 
 

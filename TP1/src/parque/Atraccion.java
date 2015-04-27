@@ -64,4 +64,11 @@ public class Atraccion {
 		return iguales;
 	}
 	
+	public int hashCode (){
+		
+		
+		return this.posicion.hashCode();
+		
+	}
+	
 }
