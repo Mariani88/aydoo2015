@@ -71,7 +71,17 @@ public class TestsTP1 {
 		this.atracciones.add(atraccion4);
 		this.atracciones.add(atraccion5);
 
+		this.inicializarUsuarioDePrueba();
+		
+
 	}
+
+	public void inicializarUsuarioDePrueba() {
+
+		this.usuario = new Usuario(TipoDeAtraccion.AVENTURA);
+	}
+
+	
 
 	@Test
 	public void testMismaPosicionYMismoTipoIgualMismaAtraccion() {
