@@ -27,8 +27,11 @@ public class Itinerario {
 		
 		boolean iguales = this == obj;
 		
-		if ( !iguales ){
-			iguales = this.atracciones.equals(obj);
+		if ( !iguales && obj instanceof Itinerario ){
+			
+			Itinerario obje = (Itinerario)obj;
+			
+			iguales = this.atracciones.equals(obje.getAtracciones());
 		}
 			
 		return iguales;	

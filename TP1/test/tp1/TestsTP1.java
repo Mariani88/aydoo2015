@@ -95,7 +95,7 @@ public class TestsTP1 {
 		atracciones1.add(this.atracciones.get(1));
 		atracciones1.add(this.atracciones.get(4));
 
-		Promocion promocion1 = new PromocionPorcentual(atracciones1, 3, 25);
+		Promocion promocion1 = new PromocionPorcentual(atracciones1, 4, 25);
 
 		// atraccion0, atraccion1, atraccion3, atraccion5
 		List<Atraccion> atracciones2 = new LinkedList<Atraccion>();
@@ -236,7 +236,7 @@ public class TestsTP1 {
 	public void considerarPromocionesAccesiblesSobreItinerarioComun (){
 		
 		this.usuario.setPresupuesto(600);
-		this.usuario.setTiempoDiponible((float)8.5);
+		this.usuario.setTiempoDiponible((float)100);
 		this.usuario.setVelocidadDeTraslado(10000);
 		
 		Sugestor sugestor = new Sugestor(this.atracciones, this.promociones);
@@ -271,6 +271,30 @@ public class TestsTP1 {
 		Assert.assertEquals(675, itinerarios.get(1).getCostoTotal(), 1);
 		
 	}
+	
+	@Test
+	public void considerarPromocionesAccesiblesPorVigencia (){
+		
+		this.usuario.setPresupuesto(6000);
+		this.usuario.setTiempoDiponible((float)9);
+		this.usuario.setVelocidadDeTraslado(10000);
+		
+		Sugestor sugestor = new Sugestor(this.atracciones, this.promociones);
+
+		List<Itinerario> itinerarios = sugestor.crearItinerarios(this.usuario);
+
+		
+		Itinerario itinerarioInaccesible = new Itinerario(675, this.promociones
+				.get(1).getAtracciones());
+
+		Assert.assertEquals(this.promociones.get(0).getAtracciones(),
+				itinerarios.get(0).getAtracciones());
+		Assert.assertEquals(500, itinerarios.get(0).getCostoTotal(), 1);
+		
+		Assert.assertFalse(itinerarios.contains( itinerarioInaccesible ));
+
+	}
+	
 	
 	
 }
