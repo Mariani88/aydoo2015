@@ -23,34 +23,37 @@ public class Sugestor {
 
 		List<Itinerario> itinerarios = new LinkedList<Itinerario>();
 		float precioItinerario = 0;
-		
+		int tiempoAcumulado = 0;
+
 		Iterator<Atraccion> iterador = this.atracciones.iterator();
 
 		List<Atraccion> atraccionesAccesibles = new LinkedList<Atraccion>();
 
 		while (iterador.hasNext()) {
-			
+
 			Atraccion atraccionEnEvaluacion = iterador.next();
 
-			boolean interesaAtraccion =  atraccionEnEvaluacion.getTipo() == usuario
+			boolean interesaAtraccion = atraccionEnEvaluacion.getTipo() == usuario
 					.getAtraccionPreferida();
-			
+
 			boolean alcanzaPresupuesto = (precioItinerario + atraccionEnEvaluacion
 					.getCosto()) <= usuario.getPresupuesto();
 
-			boolean hayCupo = atraccionEnEvaluacion.getCupo()!=0; 
-			
-			if (interesaAtraccion && alcanzaPresupuesto && hayCupo) {
-				
+			boolean hayCupo = atraccionEnEvaluacion.getCupo() != 0;
+
+			boolean hayTiempo = (tiempoAcumulado + atraccionEnEvaluacion
+					.getTiempoDeDuracion()) <= usuario.getTiempoDiponible();
+
+			if (interesaAtraccion && alcanzaPresupuesto && hayCupo && hayTiempo) {
 				atraccionesAccesibles.add(atraccionEnEvaluacion);
 				precioItinerario += atraccionEnEvaluacion.getCosto();
-				
+				tiempoAcumulado += atraccionEnEvaluacion.getTiempoDeDuracion();
 			}
 		}
 
 		itinerarios
 				.add(new Itinerario(precioItinerario, atraccionesAccesibles));
-		
+
 		return itinerarios;
 	}
 }
