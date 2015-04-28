@@ -3,7 +3,7 @@ package parque;
 public class Usuario {
 
 	private float presupuesto;
-	private int tiempoDiponible;
+	private float tiempoDiponible;
 	private int velocidadDeTraslado;
 	private TipoDeAtraccion AtraccionPreferida;
 	private Coordenada posicion;
@@ -31,12 +31,12 @@ public class Usuario {
 	}
 
 
-	public int getTiempoDiponible() {
+	public float getTiempoDiponible() {
 		return this.tiempoDiponible;
 	}
 
 
-	public void setTiempoDiponible(int tiempoDiponible) {
+	public void setTiempoDiponible(float tiempoDiponible) {
 		this.tiempoDiponible = tiempoDiponible;
 	}
 

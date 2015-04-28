@@ -58,7 +58,7 @@ public class TestsTP1 {
 		atraccion4.setCupo(80);
 		atraccion4.setTiempoDeDuracion(1);
 
-		Atraccion atraccion5 = new Atraccion(new Coordenada(70, 10),
+		Atraccion atraccion5 = new Atraccion(new Coordenada(20, 10),
 				TipoDeAtraccion.PAISAJE);
 		atraccion5.setCosto(50);
 		atraccion5.setCupo(40);
@@ -190,8 +190,8 @@ public class TestsTP1 {
 	public void rechazarAtraccionesConTiempoQueSuperaElDisponible (){
 		
 		this.usuario.setPresupuesto(6000);
-		this.usuario.setTiempoDiponible(4);
-		this.usuario.setVelocidadDeTraslado(1000);
+		this.usuario.setTiempoDiponible((float)4.1);
+		this.usuario.setVelocidadDeTraslado(100000);
 
 		Sugestor sugestor = new Sugestor(this.atracciones, this.promociones);
 
@@ -203,11 +203,32 @@ public class TestsTP1 {
 
 		Assert.assertEquals(atraccionesAccesibles, itinerarios.get(0)
 				.getAtracciones());
-		
-		
-		
 	}
 	
+	@Test
+	public void rechazarAtraccionesConDistanciaInaccesiblePorTiempo(){
+		
+		this.usuario.setPresupuesto(6000);
+		this.usuario.setTiempoDiponible((float)8.5);
+		this.usuario.setVelocidadDeTraslado(30);
+		
+		Sugestor sugestor = new Sugestor(this.atracciones, this.promociones);
+
+		List<Itinerario> itinerarios = sugestor.crearItinerarios(this.usuario);
+
+		List<Atraccion> atraccionesAccesibles = new LinkedList<Atraccion>();
+		atraccionesAccesibles.add(this.atracciones.get(0));
+		atraccionesAccesibles.add(this.atracciones.get(1));
+
+		Assert.assertEquals(atraccionesAccesibles, itinerarios.get(0)
+				.getAtracciones());
 	
-	
+		//modifico tiempo disponible
+		this.usuario.setVelocidadDeTraslado(1);
+		
+		itinerarios = sugestor.crearItinerarios(this.usuario);
+		atraccionesAccesibles.remove(1);
+		Assert.assertEquals(atraccionesAccesibles, itinerarios.get(0)
+				.getAtracciones());
+	}
 }

@@ -5,7 +5,7 @@ import java.util.List;
 public abstract class Promocion {
 	
 	protected List<Atraccion> atracciones;
-	protected int vigencia;
+	protected float vigencia;
 	protected float criterioDeDescuento;
 	
 	public Promocion (List<Atraccion> atracciones, int vigencia){
@@ -23,11 +23,11 @@ public abstract class Promocion {
 		this.atracciones = atracciones;
 	}
 
-	public int getVigencia() {
+	public float getVigencia() {
 		return this.vigencia;
 	}
 
-	public void setVigencia(int vigencia) {
+	public void setVigencia(float vigencia) {
 		this.vigencia = vigencia;
 	}	
 }

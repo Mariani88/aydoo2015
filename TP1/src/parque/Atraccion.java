@@ -4,7 +4,7 @@ public class Atraccion {
 
 	private Coordenada posicion;
 	private float costo;
-	private int tiempoDeDuracion;
+	private float tiempoDeDuracion;
 	private int cupo;
 	private TipoDeAtraccion tipo;
 
@@ -21,11 +21,11 @@ public class Atraccion {
 		this.costo = costo;
 	}
 
-	public int getTiempoDeDuracion() {
+	public float getTiempoDeDuracion() {
 		return this.tiempoDeDuracion;
 	}
 
-	public void setTiempoDeDuracion(int tiempoDeDuracion) {
+	public void setTiempoDeDuracion(float tiempoDeDuracion) {
 		this.tiempoDeDuracion = tiempoDeDuracion;
 	}
 
