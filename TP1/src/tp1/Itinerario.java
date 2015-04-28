@@ -23,18 +23,19 @@ public class Itinerario {
 		return this.costoTotal;
 	}
 		
-	public boolean equals (Object obj){
-		
+	public boolean equals(Object obj) {
+
 		boolean iguales = this == obj;
-		
-		if ( !iguales && obj instanceof Itinerario ){
-			
-			Itinerario obje = (Itinerario)obj;
-			
-			iguales = this.atracciones.equals(obje.getAtracciones());
+
+		if (!iguales && obj instanceof Itinerario) {
+
+			Itinerario obje = (Itinerario) obj;
+
+			iguales = this.atracciones.equals(obje.getAtracciones())
+					&& this.costoTotal == obje.costoTotal;
 		}
-			
-		return iguales;	
+
+		return iguales;
 	}
 	
 }

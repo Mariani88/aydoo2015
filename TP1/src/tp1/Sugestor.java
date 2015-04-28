@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+import calculo.CalculadorDeTraslado;
 import parque.Atraccion;
 import parque.Coordenada;
 import parque.Promocion;
@@ -27,24 +28,7 @@ public class Sugestor {
 	}
 	
 
-	private float calcularTiempoDeTraslado(Atraccion atraccion,
-			Usuario usuario, Coordenada posicionDeCalculo) {
-
-		float tiempoDeTraslado = 0;
-
-		float distanciaX = atraccion.getPosicion().getX()
-				- posicionDeCalculo.getX();
-		float distanciaY = atraccion.getPosicion().getY()
-				- posicionDeCalculo.getY();
-
-		float distancia = (float) (Math.pow(distanciaX, 2) + Math.pow(
-				distanciaY, 2));
-		distancia = (float) Math.pow(distancia, 0.5);
-
-		tiempoDeTraslado = distancia / usuario.getVelocidadDeTraslado();
-
-		return tiempoDeTraslado;
-	}
+	
 
 	public List<Itinerario> crearItinerarios(Usuario usuario) {
 
@@ -60,11 +44,13 @@ public class Sugestor {
 
 		this.aplicarPromociones (itinerarios, usuario);
 		
+		CalculadorDeTraslado calculador = new CalculadorDeTraslado ();
+		
 		while (iterador.hasNext()) {
 
 			Atraccion atraccionEnEvaluacion = iterador.next();
 
-			tiempoDeTraslado = this.calcularTiempoDeTraslado(
+			tiempoDeTraslado = calculador.calcularTiempoDeTraslado(
 					atraccionEnEvaluacion, usuario, posicionDeCalculo);
 
 			boolean interesaAtraccion = atraccionEnEvaluacion.getTipo() == usuario

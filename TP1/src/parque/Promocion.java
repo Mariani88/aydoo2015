@@ -3,6 +3,8 @@ package parque;
 import java.util.Iterator;
 import java.util.List;
 
+import calculo.CalculadorDeTraslado;
+
 public abstract class Promocion {
 	
 	protected List<Atraccion> atracciones;
@@ -40,6 +42,10 @@ public abstract class Promocion {
 		int atraccionInteresante = 0;
 		float tiempoAcumulado = 0;
 		boolean hayCupo = true;
+		float tiempoDeTraslado = 0;
+		
+		CalculadorDeTraslado calculador = new CalculadorDeTraslado ();
+		Coordenada posicionDeCalculo = usuario.getPosicion();
 		
 		while (iterador.hasNext() && hayCupo){
 			
@@ -49,12 +55,20 @@ public abstract class Promocion {
 				atraccionInteresante++;
 			}
 			
-			tiempoAcumulado+=atraccion.getTiempoDeDuracion();
+			tiempoDeTraslado = calculador.calcularTiempoDeTraslado(atraccion,
+					usuario, posicionDeCalculo);
+			
+			tiempoAcumulado += atraccion.getTiempoDeDuracion() + tiempoDeTraslado;
+			posicionDeCalculo = atraccion.getPosicion();
+			
 			hayCupo = atraccion.getCupo() > 0;
+			
 			
 		}
 		
-		tiempoAcumulado += this.vigencia;
+		//tiempoAcumulado += this.vigencia;
+		
+		boolean estaVigente = tiempoAcumulado < this.vigencia; 
 		
 		boolean interesaAtraccion = atraccionInteresante >= this.atracciones
 				.size() / 2;
@@ -62,7 +76,7 @@ public abstract class Promocion {
 				.getPresupuesto();
 		boolean hayTiempo = tiempoAcumulado <= usuario.getTiempoDiponible();
 		boolean esAplicable = interesaAtraccion && alcanzaPresupuesto
-				&& hayCupo && hayTiempo;
+				&& hayCupo && hayTiempo && estaVigente ;
 
 		return esAplicable;
 	}
