@@ -15,6 +15,7 @@ public abstract class Promocion {
 	}
 	
 	public abstract float getDescuento ();
+	
 
 	public List<Atraccion> getAtracciones() {
 		return this.atracciones;
@@ -53,7 +54,7 @@ public abstract class Promocion {
 			
 		}
 		
-		boolean interesaAtraccion = atraccionInteresante > this.atracciones
+		boolean interesaAtraccion = atraccionInteresante >= this.atracciones
 				.size() / 2;
 		boolean alcanzaPresupuesto = this.getCosto() <= usuario
 				.getPresupuesto();

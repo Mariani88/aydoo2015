@@ -3,7 +3,6 @@ package tp1;
 import java.util.LinkedList;
 import java.util.List;
 
-import localExceptions.PorcentajeInvalido;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -94,7 +93,7 @@ public class TestsTP1 {
 		// atraccion0, atraccion1, atraccion3
 		List<Atraccion> atracciones1 = new LinkedList<Atraccion>();
 		atracciones1.add(this.atracciones.get(1));
-		atracciones1.add(this.atracciones.get(3));
+		atracciones1.add(this.atracciones.get(4));
 
 		Promocion promocion1 = new PromocionPorcentual(atracciones1, 3, 25);
 
@@ -251,7 +250,7 @@ public class TestsTP1 {
 	}
 	
 	
-	/*@Test
+	@Test
 	public void considerarPromocionesAccesibles (){
 		
 		this.usuario.setPresupuesto(6000);
@@ -269,9 +268,9 @@ public class TestsTP1 {
 		
 		Assert.assertEquals(this.promociones.get(1).getAtracciones(),
 				itinerarios.get(1).getAtracciones());
-		Assert.assertEquals(3875, itinerarios.get(1).getCostoTotal(), 1);
+		Assert.assertEquals(675, itinerarios.get(1).getCostoTotal(), 1);
 		
-	}*/
+	}
 	
 	
 }

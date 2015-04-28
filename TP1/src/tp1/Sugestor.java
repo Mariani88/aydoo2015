@@ -58,6 +58,8 @@ public class Sugestor {
 
 		List<Atraccion> atraccionesAccesibles = new LinkedList<Atraccion>();
 
+		this.aplicarPromociones (itinerarios, usuario);
+		
 		while (iterador.hasNext()) {
 
 			Atraccion atraccionEnEvaluacion = iterador.next();
@@ -87,7 +89,7 @@ public class Sugestor {
 			}
 		}
 		
-		this.aplicarPromociones (itinerarios, usuario);
+		
 		itinerarios
 				.add(new Itinerario(precioItinerario, atraccionesAccesibles));
 
