@@ -16,6 +16,7 @@ public class Sugestor {
 	public Sugestor(List<Atraccion> atracciones, List<Promocion> promociones) {
 		this.atracciones = atracciones;
 		this.promocionesDisponibles = promociones;
+		
 	}
 
 	public List<Itinerario> crearItinerarios(Usuario usuario) {
@@ -37,7 +38,9 @@ public class Sugestor {
 			boolean alcanzaPresupuesto = (precioItinerario + atraccionEnEvaluacion
 					.getCosto()) <= usuario.getPresupuesto();
 
-			if (interesaAtraccion && alcanzaPresupuesto) {
+			boolean hayCupo = atraccionEnEvaluacion.getCupo()!=0; 
+			
+			if (interesaAtraccion && alcanzaPresupuesto && hayCupo) {
 				
 				atraccionesAccesibles.add(atraccionEnEvaluacion);
 				precioItinerario += atraccionEnEvaluacion.getCosto();

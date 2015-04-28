@@ -160,4 +160,30 @@ public class TestsTP1 {
 		Assert.assertEquals(atraccionesAccesibles, itinerarios.get(0)
 				.getAtracciones());
 	}
+	
+	@Test
+	public void noDevolverAtraccionesSinCupo (){
+		
+		this.usuario.setPresupuesto(600);
+		this.usuario.setTiempoDiponible(1000);
+		this.usuario.setVelocidadDeTraslado(1000);
+
+		this.atracciones.get(0).setCupo(0);
+		
+		Sugestor sugestor = new Sugestor(this.atracciones, this.promociones);
+
+		List<Itinerario> itinerarios = sugestor.crearItinerarios(this.usuario);
+
+		List<Atraccion> atraccionesAccesibles = new LinkedList<Atraccion>();
+		
+		atraccionesAccesibles.add(this.atracciones.get(1));
+
+		Assert.assertEquals(atraccionesAccesibles, itinerarios.get(0)
+				.getAtracciones());
+		
+		this.atracciones.get(0).setCupo(100);
+		
+	}
+	
+	
 }
