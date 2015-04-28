@@ -19,6 +19,13 @@ public class Sugestor {
 		this.promocionesDisponibles = promociones;
 
 	}
+	
+	public Sugestor(List<Atraccion> atracciones) {
+		this.atracciones = atracciones;
+		this.promocionesDisponibles = new LinkedList <Promocion>();
+
+	}
+	
 
 	private float calcularTiempoDeTraslado(Atraccion atraccion,
 			Usuario usuario, Coordenada posicionDeCalculo) {
@@ -79,10 +86,29 @@ public class Sugestor {
 				posicionDeCalculo = atraccionEnEvaluacion.getPosicion();
 			}
 		}
-
+		
+		this.aplicarPromociones (itinerarios, usuario);
 		itinerarios
 				.add(new Itinerario(precioItinerario, atraccionesAccesibles));
 
+		
+		
 		return itinerarios;
+	}
+
+	
+	private void aplicarPromociones(List<Itinerario> itinerarios,
+			Usuario usuario) {
+	
+		Iterator <Promocion> iterador = this.promocionesDisponibles.iterator();
+		
+		while (iterador.hasNext()){
+			Promocion promocionAEvaluar = iterador.next();
+			
+			if (promocionAEvaluar.esAplicableA(usuario)) {
+				itinerarios.add( new Itinerario( promocionAEvaluar.getCosto(),
+						promocionAEvaluar.getAtracciones()) );
+			}	
+		}
 	}
 }

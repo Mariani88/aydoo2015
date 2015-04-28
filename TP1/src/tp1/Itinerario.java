@@ -15,9 +15,6 @@ public class Itinerario {
 	}
 
 	
-	
-	
-	
 	public List<Atraccion> getAtracciones() {
 		return this.atracciones;
 	}

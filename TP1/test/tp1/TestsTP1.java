@@ -3,9 +3,10 @@ package tp1;
 import java.util.LinkedList;
 import java.util.List;
 
+import localExceptions.PorcentajeInvalido;
+
 import org.junit.Assert;
 import org.junit.Before;
-
 import org.junit.Test;
 
 import parque.Atraccion;
@@ -92,7 +93,6 @@ public class TestsTP1 {
 
 		// atraccion0, atraccion1, atraccion3
 		List<Atraccion> atracciones1 = new LinkedList<Atraccion>();
-		atracciones1.add(this.atracciones.get(0));
 		atracciones1.add(this.atracciones.get(1));
 		atracciones1.add(this.atracciones.get(3));
 
@@ -100,6 +100,7 @@ public class TestsTP1 {
 
 		// atraccion0, atraccion1, atraccion3, atraccion5
 		List<Atraccion> atracciones2 = new LinkedList<Atraccion>();
+		atracciones2.addAll(atracciones0);
 		atracciones2.addAll(atracciones1);
 		atracciones2.add(this.atracciones.get(5));
 
@@ -135,7 +136,7 @@ public class TestsTP1 {
 		atraccionesResultantes.add(this.atracciones.get(1));
 		atraccionesResultantes.add(this.atracciones.get(4));
 
-		Sugestor sugestor = new Sugestor(this.atracciones, this.promociones);
+		Sugestor sugestor = new Sugestor(this.atracciones);
 		List<Itinerario> itinerarios = sugestor.crearItinerarios(this.usuario);
 
 		Assert.assertEquals(atraccionesResultantes, itinerarios.get(0)
@@ -149,7 +150,7 @@ public class TestsTP1 {
 		this.usuario.setTiempoDiponible(1000);
 		this.usuario.setVelocidadDeTraslado(1000);
 
-		Sugestor sugestor = new Sugestor(this.atracciones, this.promociones);
+		Sugestor sugestor = new Sugestor(this.atracciones);
 
 		List<Itinerario> itinerarios = sugestor.crearItinerarios(this.usuario);
 
@@ -170,7 +171,7 @@ public class TestsTP1 {
 
 		this.atracciones.get(0).setCupo(0);
 		
-		Sugestor sugestor = new Sugestor(this.atracciones, this.promociones);
+		Sugestor sugestor = new Sugestor(this.atracciones);
 
 		List<Itinerario> itinerarios = sugestor.crearItinerarios(this.usuario);
 
@@ -193,7 +194,7 @@ public class TestsTP1 {
 		this.usuario.setTiempoDiponible((float)4.1);
 		this.usuario.setVelocidadDeTraslado(100000);
 
-		Sugestor sugestor = new Sugestor(this.atracciones, this.promociones);
+		Sugestor sugestor = new Sugestor(this.atracciones);
 
 		List<Itinerario> itinerarios = sugestor.crearItinerarios(this.usuario);
 
@@ -212,7 +213,7 @@ public class TestsTP1 {
 		this.usuario.setTiempoDiponible((float)8.5);
 		this.usuario.setVelocidadDeTraslado(30);
 		
-		Sugestor sugestor = new Sugestor(this.atracciones, this.promociones);
+		Sugestor sugestor = new Sugestor(this.atracciones);
 
 		List<Itinerario> itinerarios = sugestor.crearItinerarios(this.usuario);
 
@@ -231,4 +232,46 @@ public class TestsTP1 {
 		Assert.assertEquals(atraccionesAccesibles, itinerarios.get(0)
 				.getAtracciones());
 	}
+	
+	@Test
+	public void considerarPromocionesAccesiblesSobreItinerarioComun (){
+		
+		this.usuario.setPresupuesto(600);
+		this.usuario.setTiempoDiponible((float)8.5);
+		this.usuario.setVelocidadDeTraslado(10000);
+		
+		Sugestor sugestor = new Sugestor(this.atracciones, this.promociones);
+
+		List<Itinerario> itinerarios = sugestor.crearItinerarios(this.usuario);
+
+
+		Assert.assertEquals(this.promociones.get(0).getAtracciones(),
+				itinerarios.get(0).getAtracciones());
+		Assert.assertEquals(500, itinerarios.get(0).getCostoTotal(), 1);
+	}
+	
+	
+	/*@Test
+	public void considerarPromocionesAccesibles (){
+		
+		this.usuario.setPresupuesto(6000);
+		this.usuario.setTiempoDiponible((float)20);
+		this.usuario.setVelocidadDeTraslado(10000);
+		
+		Sugestor sugestor = new Sugestor(this.atracciones, this.promociones);
+
+		List<Itinerario> itinerarios = sugestor.crearItinerarios(this.usuario);
+
+
+		Assert.assertEquals(this.promociones.get(0).getAtracciones(),
+				itinerarios.get(0).getAtracciones());
+		Assert.assertEquals(500, itinerarios.get(0).getCostoTotal(), 1);
+		
+		Assert.assertEquals(this.promociones.get(1).getAtracciones(),
+				itinerarios.get(1).getAtracciones());
+		Assert.assertEquals(3875, itinerarios.get(1).getCostoTotal(), 1);
+		
+	}*/
+	
+	
 }

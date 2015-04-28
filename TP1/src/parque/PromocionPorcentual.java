@@ -8,7 +8,7 @@ import localExceptions.PorcentajeInvalido;
 
 public class PromocionPorcentual extends Promocion {
 
-	public PromocionPorcentual(List<Atraccion> atracciones, int vigencia, float porcentajeDeDescuento) {
+	public PromocionPorcentual(List<Atraccion> atracciones, float vigencia, float porcentajeDeDescuento) {
 		super(atracciones, vigencia);
 		
 		try {

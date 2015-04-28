@@ -5,7 +5,7 @@ import java.util.List;
 
 public class PromocionAbsoluta extends Promocion {
 	
-	public PromocionAbsoluta(List<Atraccion> atracciones, int vigencia, float descuento) {
+	public PromocionAbsoluta(List<Atraccion> atracciones, float vigencia, float descuento) {
 		super(atracciones, vigencia);
 		this.criterioDeDescuento = descuento;	
 	}
@@ -13,5 +13,6 @@ public class PromocionAbsoluta extends Promocion {
 	@Override
 	public float getDescuento() {
 		return this.criterioDeDescuento;
-	}	
+	}
+
 }
