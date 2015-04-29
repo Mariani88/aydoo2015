@@ -1,0 +1,19 @@
+Supuestos:
+
+1- Las promociones tienen cada una un itinerario.
+
+2- El sistema devuelve todos los itinerarios conformados por todas las promociones accesibles y de interes, 
+mas un itinerario mas que no sea parte de una promocion y sea accesible, escaneando las atracciones del parque.
+Si el itinerario generado pertenece a una promocion, no se lo agrega, pues ya esta sugerido en la promocion.
+
+3- Se considera que una promocion es de interes para el usuario si la mitad o mas de sus atracciones es del tipo
+que le interesa al usuario.
+
+4- El criterio para generar el ultimo itinerario (que no es parte de ninguna promocion) es el criterio con el que
+se introdujeron en la lista de atracciones. Si la lista de atracciones se creo agregando las atracciones ordenadas
+por precio, entonces el sistema creará el itinerario comenzando por las atracciones mas baratas y finalizando por
+las mas caras.
+
+5- Se sugiere una promocion si el tiempo que requiere el usuario para recorrer todo el itinerario es menor o igual
+ a la vigencia de la promocion y si el tiempo requerido es menos o igual al tiempo disponible del usuario. 
+ Si el usuario requiere 5 horas para recorrerlo (), la promocion debe  

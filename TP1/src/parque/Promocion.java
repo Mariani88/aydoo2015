@@ -66,9 +66,8 @@ public abstract class Promocion {
 			
 		}
 		
-		//tiempoAcumulado += this.vigencia;
 		
-		boolean estaVigente = tiempoAcumulado < this.vigencia; 
+		boolean estaVigente = tiempoAcumulado < this.vigencia ; 
 		
 		boolean interesaAtraccion = atraccionInteresante >= this.atracciones
 				.size() / 2;

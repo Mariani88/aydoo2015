@@ -28,8 +28,6 @@ public class Sugestor {
 	}
 	
 
-	
-
 	public List<Itinerario> crearItinerarios(Usuario usuario) {
 
 		List<Itinerario> itinerarios = new LinkedList<Itinerario>();
