@@ -1,7 +1,6 @@
-package parque;
+package trabajo1.parque;
 
 import java.util.List;
-
 
 public class PromocionAbsoluta extends Promocion {
 	
@@ -14,5 +13,4 @@ public class PromocionAbsoluta extends Promocion {
 	public float getDescuento() {
 		return this.criterioDeDescuento;
 	}
-
 }

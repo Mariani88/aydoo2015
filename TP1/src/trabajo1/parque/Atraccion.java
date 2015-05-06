@@ -1,4 +1,4 @@
-package parque;
+package trabajo1.parque;
 
 public class Atraccion {
 
@@ -65,10 +65,6 @@ public class Atraccion {
 	}
 	
 	public int hashCode (){
-		
-		
 		return this.posicion.hashCode();
-		
 	}
-	
 }

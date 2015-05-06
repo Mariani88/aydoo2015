@@ -1,10 +1,9 @@
-package parque;
+package trabajo1.parque;
 
 import java.util.Iterator;
 import java.util.List;
 
-import localExceptions.PorcentajeInvalido;
-
+import trabajo1.excepcionesLocales.PorcentajeInvalido;
 
 public class PromocionPorcentual extends Promocion {
 
@@ -28,7 +27,6 @@ public class PromocionPorcentual extends Promocion {
 	public float getDescuento() {
 		
 		float total = 0;
-		
 		Iterator<Atraccion> iterador = this.atracciones.iterator();
 		
 		while (iterador.hasNext()){

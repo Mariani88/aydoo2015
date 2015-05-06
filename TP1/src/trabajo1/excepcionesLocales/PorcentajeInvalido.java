@@ -1,4 +1,4 @@
-package localExceptions;
+package trabajo1.excepcionesLocales;
 
 public class PorcentajeInvalido extends RuntimeException {
 
@@ -8,5 +8,4 @@ public class PorcentajeInvalido extends RuntimeException {
 		super(
 				"el valor del porcentaje debe ser mayor a 0 y menor o igual a 100");
 	}
-
 }

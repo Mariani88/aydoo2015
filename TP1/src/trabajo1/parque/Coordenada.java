@@ -1,4 +1,4 @@
-package parque;
+package trabajo1.parque;
 
 public class Coordenada {
 	
@@ -26,19 +26,15 @@ public class Coordenada {
 		this.y = y;
 	}
 	
-	
 	public boolean equals (Object obj){
 		
 		boolean iguales = super.equals(obj);
 		
-		if ( !iguales && obj != null && obj instanceof Coordenada ){
-			
+		if ( !iguales && obj != null && obj instanceof Coordenada ){	
 			Coordenada obje = (Coordenada)obj;
 			iguales = this.x == obje.getX() && this.y == obje.getY();
 		}
 		
 		return iguales;
 	}
-	
-	
 }

@@ -1,19 +1,30 @@
-package tp1;
+package trabajo1.principal;
 
+import java.util.LinkedList;
 import java.util.List;
-
-import parque.Atraccion;
+import trabajo1.parque.Atraccion;
 
 public class Itinerario {
 
 	private List<Atraccion> atracciones;
 	private float costoTotal;
+	private float tiempoRequerido;
+	
+	public void setCostoTotal(float costoTotal) {
+		this.costoTotal = costoTotal;
+	}
+
+	public Itinerario (){
+		this.costoTotal = 0;
+		this.atracciones = new LinkedList <Atraccion> ();
+		this.tiempoRequerido = 0;
+	}
 	
 	public Itinerario (float costoTotal, List <Atraccion> atracciones){
 		this.costoTotal = costoTotal;
 		this.atracciones = atracciones;
+		this.tiempoRequerido = 0;
 	}
-
 	
 	public List<Atraccion> getAtracciones() {
 		return this.atracciones;
@@ -37,5 +48,12 @@ public class Itinerario {
 
 		return iguales;
 	}
-	
+
+	public float getTiempoRequerido() {
+		return this.tiempoRequerido;
+	}
+
+	public void setTiempoRequerido(float tiempoRequerido) {
+		this.tiempoRequerido = tiempoRequerido;
+	}
 }
