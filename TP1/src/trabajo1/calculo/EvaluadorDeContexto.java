@@ -1,10 +1,11 @@
 package trabajo1.calculo;
 
 import java.util.Iterator;
+
 import trabajo1.parque.Atraccion;
 import trabajo1.parque.Coordenada;
-import trabajo1.parque.Promocion;
 import trabajo1.parque.Usuario;
+import trabajo1.parque.promociones.PromocionPorSubconjunto;
 import trabajo1.principal.Itinerario;
 
 public class EvaluadorDeContexto {
@@ -77,7 +78,7 @@ public class EvaluadorDeContexto {
 	 * @param itinerarioACrear
 	 * @return
 	 */
-	public boolean promocionEsAplicable(Promocion promocionAEvaluar,
+	public boolean promocionEsAplicable(PromocionPorSubconjunto promocionAEvaluar,
 			Itinerario itinerarioACrear) {
 		
 		Iterator<Atraccion> iterador = promocionAEvaluar.getAtracciones()
@@ -148,7 +149,7 @@ public class EvaluadorDeContexto {
 	 * @return
 	 */
 	private boolean aplicaPromocion(int atraccionesInteresantes,
-			Itinerario itinerarioTemporal, Promocion promocionAEvaluar) {
+			Itinerario itinerarioTemporal, PromocionPorSubconjunto promocionAEvaluar) {
 		
 		boolean estaVigente = itinerarioTemporal.getTiempoRequerido() < promocionAEvaluar
 				.getVigencia();

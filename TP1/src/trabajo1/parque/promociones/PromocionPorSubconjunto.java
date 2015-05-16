@@ -1,14 +1,13 @@
-package trabajo1.parque;
+package trabajo1.parque.promociones;
 
 import java.util.List;
 
-public abstract class Promocion {
+import trabajo1.parque.Atraccion;
+
+public abstract class PromocionPorSubconjunto extends Promocion {
 	
-	protected List<Atraccion> atracciones;
-	protected float vigencia;
-	protected float criterioDeDescuento;
 	
-	public Promocion (List<Atraccion> atracciones, float vigencia){
+	public PromocionPorSubconjunto (List<Atraccion> atracciones, float vigencia){
 		this.atracciones = atracciones;
 		this.vigencia = vigencia;
 	}

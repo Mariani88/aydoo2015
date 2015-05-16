@@ -1,6 +1,6 @@
 package trabajo1.parque;
 
-public class Coordenada {
+public class Coordenada implements Cloneable{
 	
 	private int x;
 	private int y;
@@ -14,16 +14,8 @@ public class Coordenada {
 		return this.x;
 	}
 
-	public void setX(int x) {
-		this.x = x;
-	}
-
 	public int getY() {
 		return this.y;
-	}
-
-	public void setY(int y) {
-		this.y = y;
 	}
 	
 	public boolean equals (Object obj){
@@ -36,5 +28,18 @@ public class Coordenada {
 		}
 		
 		return iguales;
+	}
+	
+	public Coordenada clone(){
+		
+		Coordenada copiaPosicion = null;
+		
+		try{
+			copiaPosicion = (Coordenada)super.clone();
+		}catch (CloneNotSupportedException e){
+			e.printStackTrace();
+		}
+		
+		return copiaPosicion;
 	}
 }

@@ -1,8 +1,10 @@
-package trabajo1.parque;
+package trabajo1.parque.promociones;
 
 import java.util.List;
 
-public class PromocionCuatroPorTres extends Promocion {
+import trabajo1.parque.Atraccion;
+
+public class PromocionCuatroPorTres extends PromocionPorSubconjunto {
 	
 	public PromocionCuatroPorTres(List<Atraccion> atracciones, float vigencia, Atraccion atraccionGratuita) {
 		super(atracciones, vigencia);

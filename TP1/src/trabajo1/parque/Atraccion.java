@@ -1,6 +1,6 @@
 package trabajo1.parque;
 
-public class Atraccion {
+public class Atraccion  implements Cloneable{
 
 	private Coordenada posicion;
 	private float costo;
@@ -66,5 +66,20 @@ public class Atraccion {
 	
 	public int hashCode (){
 		return this.posicion.hashCode();
+	}
+	
+	
+	public Atraccion clone() {
+		
+		Atraccion copia = null;
+		try{
+			copia = (Atraccion)super.clone();
+		}catch (CloneNotSupportedException e){
+			e.printStackTrace();
+		}
+		
+		copia.posicion = this.posicion.clone();
+		
+		return copia;
 	}
 }

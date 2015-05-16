@@ -1,8 +1,0 @@
-a la fecha 5/5/2015
-
-*Se reorganizo la estructura del proyecto: Todos los paquetes se englobaron en uno solo raiz, llamado "trabajo1"
-*Se eliminaron lineas en blanco de mas
-*Se agrego una clase para eliminar logica de las clases correspondientes al dominio.
-*Se modifico el diagramaDeClases, en particular las flechas de composicion y la clase agregada.
-*Se modificaron algunos metodos, a fin de acortar algunos y reducir logica de algunas clases. 
-

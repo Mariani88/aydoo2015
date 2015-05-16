@@ -1,11 +1,12 @@
-package trabajo1.parque;
+package trabajo1.parque.promociones;
 
 import java.util.Iterator;
 import java.util.List;
 
 import trabajo1.excepcionesLocales.PorcentajeInvalido;
+import trabajo1.parque.Atraccion;
 
-public class PromocionPorcentual extends Promocion {
+public class PromocionPorcentual extends PromocionPorSubconjunto {
 
 	public PromocionPorcentual(List<Atraccion> atracciones, float vigencia, float porcentajeDeDescuento) {
 		super(atracciones, vigencia);
