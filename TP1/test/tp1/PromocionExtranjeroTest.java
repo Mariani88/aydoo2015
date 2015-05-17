@@ -53,7 +53,7 @@ public class PromocionExtranjeroTest {
 		this.validarValoresSinModificacion(atraccionesRebajadas);
 	}
 	
-	/*@Test
+	@Test
 	public void noRebajarSiNoHayVigencia (){
 		
 		Inicializador inicializador = new Inicializador();
@@ -69,7 +69,7 @@ public class PromocionExtranjeroTest {
 				.rebajarPrecioAtracciones();
 
 		this.validarValoresSinModificacion(atraccionesRebajadas);
-	}*/
+	}
 	
 	
 	private void validarValoresSinModificacion(
