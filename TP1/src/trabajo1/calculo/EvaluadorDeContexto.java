@@ -1,6 +1,7 @@
 package trabajo1.calculo;
 
 import java.util.Iterator;
+import java.util.List;
 
 import trabajo1.parque.Atraccion;
 import trabajo1.parque.Coordenada;
@@ -16,10 +17,9 @@ public class EvaluadorDeContexto {
 		this.usuarioAEvaluar = usuarioAEvaluar;
 	}
 
-	public float calcularTiempoDeTraslado(Atraccion atraccion,
+	
+	private float calcularDistancia(Atraccion atraccion,
 			Coordenada posicionDeCalculo) {
-
-		float tiempoDeTraslado = 0;
 
 		float distanciaX = atraccion.getPosicion().getX()
 				- posicionDeCalculo.getX();
@@ -29,6 +29,17 @@ public class EvaluadorDeContexto {
 		float distancia = (float) (Math.pow(distanciaX, 2) + Math.pow(
 				distanciaY, 2));
 		distancia = (float) Math.pow(distancia, 0.5);
+		
+		
+		return distancia;
+	}
+	
+	
+	public float calcularTiempoDeTraslado(Atraccion atraccion,
+			Coordenada posicionDeCalculo) {
+
+		float tiempoDeTraslado = 0;
+		float distancia = this.calcularDistancia(atraccion, posicionDeCalculo);
 
 		tiempoDeTraslado = distancia
 				/ this.usuarioAEvaluar.getVelocidadDeTraslado();
@@ -164,5 +175,26 @@ public class EvaluadorDeContexto {
 				&& hayTiempo && estaVigente;
 		
 		return aplica;
+	}
+
+	/**
+	 * devuelve true si todas las atracciones estan a mas de 200 kilometros
+	 * del usuario
+	 * @param atracciones
+	 * @return
+	 */
+	public boolean usuarioEsExtranjero(List<Atraccion> atracciones) {
+		
+		boolean esExtranjero = true;
+		Iterator<Atraccion> iterador = atracciones.iterator();
+
+		while (iterador.hasNext() && esExtranjero) {
+			
+			Atraccion atraccion = iterador.next();
+			esExtranjero = 200 < this.calcularDistancia(atraccion,
+					this.usuarioAEvaluar.getDomicilio());
+		}
+
+		return esExtranjero;
 	}
 }

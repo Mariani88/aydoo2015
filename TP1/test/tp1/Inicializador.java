@@ -69,7 +69,8 @@ public class Inicializador {
 
 	private void inicializarUsuarioDePrueba() {
 
-		this.usuario = new Usuario(TipoDeAtraccion.AVENTURA);
+		this.usuario = new Usuario(TipoDeAtraccion.AVENTURA, new Coordenada(
+				-100, -100));
 	}
 
 	private void inicializarPromociones() {

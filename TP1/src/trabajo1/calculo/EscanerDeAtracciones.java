@@ -23,7 +23,6 @@ public class EscanerDeAtracciones {
 		
 		Coordenada posicionDeCalculo = this.usuario.getPosicion();
 		Iterator<Atraccion> iterador = atracciones.iterator();
-		
 		Itinerario itinerario = new Itinerario ();
 		
 		while (iterador.hasNext()) {

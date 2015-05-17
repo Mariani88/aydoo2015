@@ -7,10 +7,12 @@ public class Usuario {
 	private int velocidadDeTraslado;
 	private TipoDeAtraccion AtraccionPreferida;
 	private Coordenada posicion;
+	private Coordenada domicilio;
 	
-	public Usuario (TipoDeAtraccion atraccionPreferida){
+	public Usuario (TipoDeAtraccion atraccionPreferida, Coordenada domicilio){
 		this.posicion = new Coordenada (0,0);
 		this.AtraccionPreferida = atraccionPreferida;
+		this.domicilio = domicilio;
 	}
 
 	public void setPosicion(Coordenada posicion) {
@@ -48,4 +50,8 @@ public class Usuario {
 	public Coordenada getPosicion() {
 		return this.posicion;
 	}	
+	
+	public Coordenada getDomicilio (){
+		return this.domicilio;
+	}
 }
