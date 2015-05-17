@@ -36,7 +36,7 @@ public class PromocionExtranjeroTest {
 	}
 	
 	
-	/*@Test
+	@Test
 	public void noRebajarSiNoAplica (){
 		
 		Inicializador inicializador = new Inicializador();
@@ -53,7 +53,7 @@ public class PromocionExtranjeroTest {
 		this.validarValoresSinModificacion(atraccionesRebajadas);
 	}
 	
-	@Test
+	/*@Test
 	public void noRebajarSiNoHayVigencia (){
 		
 		Inicializador inicializador = new Inicializador();
@@ -69,7 +69,7 @@ public class PromocionExtranjeroTest {
 				.rebajarPrecioAtracciones();
 
 		this.validarValoresSinModificacion(atraccionesRebajadas);
-	}
+	}*/
 	
 	
 	private void validarValoresSinModificacion(
@@ -80,5 +80,5 @@ public class PromocionExtranjeroTest {
 		Assert.assertEquals(4000, atraccionesRebajadas.get(3).getCosto(), 1);
 		Assert.assertEquals(400, atraccionesRebajadas.get(4).getCosto(), 1);
 		Assert.assertEquals(50, atraccionesRebajadas.get(5).getCosto(), 1);
-	}*/
+	}
 }
