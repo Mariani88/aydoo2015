@@ -8,9 +8,11 @@ import java.util.Map;
 
 
 
+
 import org.junit.Assert;
 import org.junit.Test;
 
+import trabajo1.excepcionesLocales.NumeroDeEntradaException;
 import trabajo1.parque.Atraccion;
 import trabajo1.parque.promociones.PromocionEnglobadora;
 import trabajo1.parque.promociones.PromocionFamiliar;
@@ -18,6 +20,18 @@ import trabajo1.principal.Sugeridor;
 
 public class PromocionFamiliarTest {
 
+	private void cargarMap(Map<Atraccion, Integer> entradasPorAtraccion,
+			List<Atraccion> atracciones) {
+		
+		Iterator <Atraccion> iterador = atracciones.iterator();
+		int entrada = 1;
+		
+		while (iterador.hasNext()){  //2,3,4,5,6,7 
+			entrada++;
+			entradasPorAtraccion.put(iterador.next().clone(), entrada );	
+		}
+	}
+	
 	@Test
 	public void rebajarPrecioAtraccionesSiAplica() {
 
@@ -40,18 +54,6 @@ public class PromocionFamiliarTest {
 		Assert.assertEquals(17200, copiaAtracciones.get(3).getCosto(), 1);
 		Assert.assertEquals(2000, copiaAtracciones.get(4).getCosto(), 1);
 		Assert.assertEquals(285, copiaAtracciones.get(5).getCosto(), 1);
-	}
-
-	private void cargarMap(Map<Atraccion, Integer> entradasPorAtraccion,
-			List<Atraccion> atracciones) {
-		
-		Iterator <Atraccion> iterador = atracciones.iterator();
-		int entrada = 1;
-		
-		while (iterador.hasNext()){  //2,3,4,5,6,7 
-			entrada++;
-			entradasPorAtraccion.put(iterador.next().clone(), entrada );	
-		}
 	}
 
 	@Test
@@ -78,5 +80,22 @@ public class PromocionFamiliarTest {
 		Assert.assertEquals(50, copiaAtracciones.get(5).getCosto(), 1);
 	}
 
+	@Test (expected = NumeroDeEntradaException.class)
+	public void arrojarExcepcionConNumeroDeEntradasNegativo (){
+		
+		Map<Atraccion, Integer> entradasPorAtraccion = new HashMap<Atraccion, Integer>();
+		Inicializador inicializador = new Inicializador();
+		inicializador.inicializarDatosDePrueba();
 
+		List <Atraccion> atracciones = inicializador.getAtracciones();
+		Sugeridor sugeridor = new Sugeridor(atracciones);
+		
+		entradasPorAtraccion.put(atracciones.get(0).clone(), 4);
+		entradasPorAtraccion.put(atracciones.get(1).clone(), -2);
+
+		PromocionEnglobadora promocion = new PromocionFamiliar(5,
+				entradasPorAtraccion);
+
+		List<Atraccion> copiaAtracciones = promocion.rebajarPrecioAtracciones();	
+	}
 }

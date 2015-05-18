@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import trabajo1.excepcionesLocales.NumeroDeEntradaException;
 import trabajo1.parque.Atraccion;
 import trabajo1.principal.Sugeridor;
 
@@ -42,6 +43,8 @@ public class PromocionFamiliar extends PromocionEnglobadora {
 	}
 
 	private void rebajarPrecioAtraccion(Atraccion atraccion, Integer entrada) {
+		
+		if ( entrada < 0 )throw new NumeroDeEntradaException ();
 		
 		if ( 0 < entrada && entrada < 4){
 			atraccion.setCosto( atraccion.getCosto() * entrada );
