@@ -2,13 +2,17 @@ package tp1;
 
 import java.util.LinkedList;
 import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
 import trabajo1.parque.Atraccion;
 import trabajo1.parque.Coordenada;
 import trabajo1.parque.TipoDeAtraccion;
 import trabajo1.parque.Usuario;
+import trabajo1.parque.promociones.PromocionEnglobadora;
+import trabajo1.parque.promociones.PromocionExtranjero;
 import trabajo1.parque.promociones.PromocionPorSubconjunto;
 import trabajo1.principal.Itinerario;
 import trabajo1.principal.Sugeridor;
@@ -60,9 +64,6 @@ public class TP1Test {
 				.getAtracciones());
 	}
 
-	
-	
-	
 	@Test
 	public void devolverItinerarioConAtraccionesMasAccesiblesPorPresupuesto () {
 
@@ -225,5 +226,31 @@ public class TP1Test {
 				.get(0).getAtracciones());
 
 		Assert.assertFalse(itinerarios.contains( itinerarioInaccesible ));	
+	}
+	
+	
+	@Test
+	public void generarItinerarioConPromocionExtranjero(){
+
+		this.usuario.getDomicilio().setX(-4000);
+		this.usuario.setPresupuesto(4000);
+		this.usuario.setTiempoDiponible(100);
+		this.usuario.setVelocidadDeTraslado(100);
+		
+		List<PromocionEnglobadora> promocionesAlConjunto = new LinkedList<PromocionEnglobadora>();
+		promocionesAlConjunto.add(new PromocionExtranjero(1, this.usuario));
+		
+		Sugeridor sugeridor = new Sugeridor(this.atracciones, this.promociones,
+				promocionesAlConjunto);
+		
+		List<Atraccion> atraccionesItinerario = new LinkedList<Atraccion>();
+		atraccionesItinerario.add(this.atracciones.get(0));
+		atraccionesItinerario.add(this.atracciones.get(1));
+		atraccionesItinerario.add(this.atracciones.get(4));
+		
+		List<Itinerario> itinerarios = sugeridor.crearItinerarios(this.usuario);
+		
+		Assert.assertEquals(atraccionesItinerario, itinerarios.get(0).getAtracciones());
+		Assert.assertEquals(500, itinerarios.get(0).getCostoTotal(), 1);
 	}
 }

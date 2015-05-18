@@ -6,6 +6,7 @@ import java.util.List;
 import trabajo1.parque.Atraccion;
 import trabajo1.parque.Coordenada;
 import trabajo1.parque.Usuario;
+import trabajo1.parque.promociones.PromocionEnglobadora;
 import trabajo1.parque.promociones.PromocionPorSubconjunto;
 import trabajo1.principal.Itinerario;
 
@@ -49,6 +50,29 @@ public class EscanerDeAtracciones {
 			if (this.evaluador.promocionEsAplicable(promocionAEvaluar, itinerarioACrear)) {
 				itinerarios.add( itinerarioACrear );
 			}	
+		}
+	}
+
+	/**
+	 * agrega un itinerario por cada promocion englobadora, 
+	 * si aplica la promocion
+	 * @param itinerarios
+	 * @param promocionesAlConjunto
+	 */
+	public void escanearPromocionesEnglobadoras(List<Itinerario> itinerarios,
+			List<PromocionEnglobadora> promocionesAlConjunto) {
+		
+		Iterator <PromocionEnglobadora> iterador = promocionesAlConjunto.iterator();
+		
+		while ( iterador.hasNext() ){
+			
+			List<Atraccion> atraccionesRebajadas = iterador.next()
+					.rebajarPrecioAtracciones();
+			
+			Itinerario itinerario = this
+					.escanearAtracciones(atraccionesRebajadas);
+			
+			itinerarios.add(itinerario);
 		}
 	}
 }

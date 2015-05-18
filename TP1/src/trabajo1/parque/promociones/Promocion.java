@@ -4,7 +4,7 @@ import java.util.List;
 
 import trabajo1.parque.Atraccion;
 
-public class Promocion {
+public abstract class Promocion {
 
 	protected List<Atraccion> atracciones;
 	protected float vigencia;
