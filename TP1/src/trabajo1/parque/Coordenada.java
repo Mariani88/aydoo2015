@@ -50,4 +50,14 @@ public class Coordenada implements Cloneable{
 		
 		return copiaPosicion;
 	}
+	
+	
+	public int hashCode (){
+		
+		Integer x = this.x;
+		Integer y = this.y;
+		
+		return x.hashCode() + y.hashCode();
+	}
+	
 }

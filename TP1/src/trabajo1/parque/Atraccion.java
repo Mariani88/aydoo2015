@@ -53,7 +53,7 @@ public class Atraccion  implements Cloneable{
 
 		boolean iguales = super.equals(obj);
 
-		if (!iguales && obj instanceof Atraccion) {
+		if (!iguales && obj!=null && obj instanceof Atraccion) {
 
 			Atraccion obje = (Atraccion) obj;
 

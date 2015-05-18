@@ -2,10 +2,8 @@ package trabajo1.parque.promociones;
 
 import java.util.Iterator;
 import java.util.List;
-
 import trabajo1.calculo.EvaluadorDeContexto;
 import trabajo1.parque.Atraccion;
-import trabajo1.parque.Coordenada;
 import trabajo1.parque.Usuario;
 
 public class PromocionExtranjero extends PromocionEnglobadora {
