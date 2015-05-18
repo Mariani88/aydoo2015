@@ -28,7 +28,7 @@ public class PromocionFamiliar extends PromocionEnglobadora {
 		Iterator<Atraccion> iterador = copiaAtracciones.iterator();
 		Atraccion atraccion;
 		
-		while (iterador.hasNext()){
+		while (iterador.hasNext() && this.vigencia>0){
 			
 			atraccion = iterador.next();
 			Integer entrada = this.entradasPorAtraccion.get(atraccion);

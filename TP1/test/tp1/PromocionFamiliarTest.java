@@ -54,7 +54,29 @@ public class PromocionFamiliarTest {
 		}
 	}
 
-	
+	@Test
+	public void noRebajarPreciosSiNoEstaVigente(){
+		
+		Map<Atraccion, Integer> entradasPorAtraccion = new HashMap<Atraccion, Integer>();
+		Inicializador inicializador = new Inicializador();
+		inicializador.inicializarDatosDePrueba();
+
+		Sugeridor sugeridor = new Sugeridor(inicializador.getAtracciones());
+
+		this.cargarMap(entradasPorAtraccion, inicializador.getAtracciones());
+
+		PromocionEnglobadora promocion = new PromocionFamiliar(0,
+				entradasPorAtraccion);
+
+		List<Atraccion> copiaAtracciones = promocion.rebajarPrecioAtracciones();
+
+		Assert.assertEquals(100, copiaAtracciones.get(0).getCosto(), 1);
+		Assert.assertEquals(500, copiaAtracciones.get(1).getCosto(), 1);
+		Assert.assertEquals(500, copiaAtracciones.get(2).getCosto(), 1);
+		Assert.assertEquals(4000, copiaAtracciones.get(3).getCosto(), 1);
+		Assert.assertEquals(400, copiaAtracciones.get(4).getCosto(), 1);
+		Assert.assertEquals(50, copiaAtracciones.get(5).getCosto(), 1);
+	}
 
 
 }
