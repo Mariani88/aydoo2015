@@ -5,4 +5,6 @@ a la fecha 5/5/2015
 *Se agrego 2 clases para eliminar logica de las clases correspondientes al dominio y reducir logica de otras clases.
 *Se modifico el diagramaDeClases, en particular las flechas de composicion y las clases agregadas.
 *Se modificaron algunos metodos, a fin de acortar algunos y reducir logica de algunas clases. 
+*Se agrego una clase en la carpeta "test" que inicializa datos de prueba, para reducir cantidad
+de metodos en TP1Test.class
 

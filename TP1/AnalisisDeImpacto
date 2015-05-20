@@ -1,0 +1,21 @@
+*Se agrego un nivel mas de herencia. Promocion paso a ser mas abstracta, el siguiente nivel contiene
+dos clases, tambien abstractas. Los distintos tipos de promociones vienen en el ultimo nivel.
+
+*Se agrego la clase "EscanerDeAtracciones", que reduce logica de "EvaluadorDeContexto" y contiene logica
+de resolucion para los cambios.
+
+*Se agrego logica a la clase "EvaluadorDeContexto" para resolver la nueva situacion planteada.
+
+*Se agrego atributo "domicilio" a la clase "Usuario"
+
+*Se agrego a la clase "Atraccion" el metodo "clone".
+
+*Se agrego un nuevo tipo de Excepcion, para "PromocionPaqueteFamiliar". Dicha excepcion
+trata la posibilidad de que se ingrese un numero de entradas n < 0.
+
+*El atributo "atracciones" de la clase "Sugeridor" paso a ser estatico. 
+
+
+Observacion con posible relevancia: 
+
+Tuve que pensar bastante como diseñar para instroducir la menor cantidad de cambios posibles. 
